@@ -1,9 +1,7 @@
 const express = require('express');
 const path = require('path');
-const nodeyourmeme = require('nodeyourmeme');
-const KYM = require('shitty-memes');
+const redditImageFetcher = require('reddit-image-fetcher');
 
-const kym = new KYM();
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -29,12 +27,13 @@ app.on('listening', () => {
 
 const port = 3000;
 const server = app.listen(port, () => {
-  nodeyourmeme.random().then((result) => {
-    console.log(result.about.split('\n')[0]);
-    kym.search(result.name).then(console.log);
-  }).catch(console.error);
-  // nodeyourmeme.random().then(console.log).catch(console.error);
-  // kym.search('1337').then(console.log);
+  redditImageFetcher.fetch({
+    type: 'costum',
+    total: 10,
+    addSubreddit: ['memes', 'funny'],
+    removeSubreddit: [],
+  })
+    .then(console.log);
   console.log(`listening on http://localhost:${port}`);
 });
 
