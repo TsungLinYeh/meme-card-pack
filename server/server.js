@@ -29,8 +29,8 @@ app.on('listening', () => {
 
 const port = 3000;
 const server = app.listen(port, () => {
-  nodeyourmeme.random().then(result => {
-    console.log(result.name);
+  nodeyourmeme.random().then((result) => {
+    console.log(result.about.split('\n')[0]);
     kym.search(result.name).then(console.log);
   }).catch(console.error);
   // nodeyourmeme.random().then(console.log).catch(console.error);

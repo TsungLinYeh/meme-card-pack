@@ -1,4 +1,5 @@
 import React from 'react';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -6,11 +7,9 @@ class App extends React.Component {
     this.state = {
 
     };
-
   }
 
   render() {
-
     return (
       <div id="app" className="app">
         test
