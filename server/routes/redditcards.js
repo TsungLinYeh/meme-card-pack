@@ -1,18 +1,10 @@
 const router = require('express').Router();
-const redditImageFetcher = require('reddit-image-fetcher');
-
-const targetreddit = ['memes'];
-// const targetreddit = ['ShitPostCrusaders'];
+const redditCards = require('../models/redditcards.js');
 
 router.get('/open', (req, res) => {
-  redditImageFetcher.fetch({
-    type: 'custom',
-    total: 10,
-    addSubreddit: targetreddit,
-  })
-    .then((result) => {
-      res.status(200).send(result);
-    });
+  const pack = redditCards.getPack();
+  res.status(200).send(pack);
+  redditCards.preload();
 });
 
 module.exports = router;

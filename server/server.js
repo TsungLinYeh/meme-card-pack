@@ -5,6 +5,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 const redditcardsRoutes = require('./routes/redditcards.js');
+const redditCards = require('./models/redditcards.js');
 
 const logger = (req, res, next) => {
   console.log(`Receiving request to ${req.url} with method ${req.method}`);
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 
 const port = 3000;
 const server = app.listen(port, () => {
+  redditCards.preload();
   console.log(`listening on http://localhost:${port}`);
 });
 
