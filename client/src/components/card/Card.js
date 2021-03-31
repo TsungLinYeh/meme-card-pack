@@ -6,10 +6,10 @@ const Card = ({
   item,
 }) => {
   let image;
-  if (item.thumbnail_url) {
+  if (item.image) {
     image = (
       <div className={`cardImgContainer ${style.cardImgContainer}`}>
-        <img className={`cardImg ${style.cardImg}`} src={item.thumbnail_url} alt={item.name} draggable="false" loading="lazy" />
+        <img className={`cardImg ${style.cardImg}`} src={item.image} alt={item.title} draggable="false" loading="lazy" />
       </div>
     );
   } else {
@@ -20,25 +20,32 @@ const Card = ({
     );
   }
   return (
-    <div>
+    <div className={`${style.card}`}>
       {image}
       <a
         className={`cardName ${style.cardName}`}
-        href={`/?product_id=${item.id}`}
+        href={item.postLink}
         draggable="false"
+        target="_blank"
+        rel="noopener noreferrer"
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
-        <h3>{item.name}</h3>
+        <h3>{item.title}</h3>
       </a>
+      <div>{item.subreddit}</div>
+      <div>
+        RP:
+        {item.upvotes}
+      </div>
     </div>
   );
 };
 
 Card.propTypes = {
   item: propTypes.shape({
-    name: propTypes.string.isRequired,
+    title: propTypes.string.isRequired,
   }).isRequired,
 };
 

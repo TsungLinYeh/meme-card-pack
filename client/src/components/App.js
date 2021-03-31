@@ -1,4 +1,6 @@
 import React from 'react';
+import Card from './card/Card';
+import dummy from '../../../dummy/dummy';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="app" className="app">
-        test
+        <Card item={dummy.dummyPost} />
       </div>
     );
   }

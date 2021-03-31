@@ -27,13 +27,13 @@ app.on('listening', () => {
 
 const port = 3000;
 const server = app.listen(port, () => {
-  redditImageFetcher.fetch({
-    type: 'costum',
-    total: 10,
-    addSubreddit: ['memes', 'funny'],
-    removeSubreddit: [],
-  })
-    .then(console.log);
+  // redditImageFetcher.fetch({
+  //   type: 'costum',
+  //   total: 10,
+  //   addSubreddit: ['memes', 'funny'],
+  //   removeSubreddit: [],
+  // })
+  //   .then(console.log);
   console.log(`listening on http://localhost:${port}`);
 });
 
