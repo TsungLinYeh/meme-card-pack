@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Card from './card/Card';
 import Image from './card/Image';
+import styles from './app.css';
 import dummy from '../../../dummy/dummy';
 
 class App extends React.Component {
@@ -10,6 +11,7 @@ class App extends React.Component {
     this.state = {
       pack: [],
       clicked: undefined,
+      isClicked: false,
     };
     this.openOnePack = this.openOnePack.bind(this);
     this.imgModalHandler = this.imgModalHandler.bind(this);
@@ -27,21 +29,22 @@ class App extends React.Component {
   imgModalHandler(item) {
     this.setState({
       clicked: item,
+      isClicked: true,
     });
   }
 
   closeModal() {
     this.setState({
-      clicked: undefined,
+      isClicked: false,
     });
   }
 
   render() {
-    const { pack, clicked } = this.state;
+    const { pack, clicked, isClicked } = this.state;
     return (
       <div id="app" className="app">
         <div>
-          <button onClick={this.openOnePack} type="button">
+          <button onClick={this.openOnePack} type="button" className={styles.button}>
             open card pack
           </button>
         </div>
@@ -54,7 +57,7 @@ class App extends React.Component {
             />
           ))}
         </div>
-        <Image clicked={clicked} closeModal={this.closeModal} isClicked={clicked !== undefined} />
+        <Image clicked={clicked} closeModal={this.closeModal} isClicked={isClicked} />
       </div>
     );
   }

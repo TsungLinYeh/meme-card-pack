@@ -2,10 +2,11 @@ const router = require('express').Router();
 const redditImageFetcher = require('reddit-image-fetcher');
 
 const targetreddit = ['memes'];
+// const targetreddit = ['ShitPostCrusaders'];
 
 router.get('/open', (req, res) => {
   redditImageFetcher.fetch({
-    type: 'costum',
+    type: 'custom',
     total: 10,
     addSubreddit: targetreddit,
   })

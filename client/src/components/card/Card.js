@@ -2,7 +2,25 @@ import React from 'react';
 import propTypes from 'prop-types';
 import style from './card.css';
 
+const checkRarity = (upvotes) => {
+  if (upvotes > 50000) {
+    return style.legendary;
+  }
+  if (upvotes > 10000) {
+    return style.ultraRare;
+  }
+  if (upvotes > 1000) {
+    return style.superRare;
+  }
+  if (upvotes > 100) {
+    return style.rare;
+  }
+  return style.normal;
+};
+
 const Card = ({ item, imgModalHandler }) => {
+  const rarity = checkRarity(item.upvotes);
+
   let image;
   if (item.image) {
     image = (
@@ -32,7 +50,7 @@ const Card = ({ item, imgModalHandler }) => {
     );
   }
   return (
-    <div className={`${style.card}`}>
+    <div className={`${style.card} ${rarity}`}>
       {image}
       <a
         className={`cardName ${style.cardName}`}

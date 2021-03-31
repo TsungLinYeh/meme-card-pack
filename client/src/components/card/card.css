@@ -8,10 +8,11 @@
   margin: 5px;
   background: white;
   box-shadow: 2px 2px 5px rgb(0 0 0 / 25%);
+  border: 10px solid;
 }
 
 .cardImgContainer {
-  width: 95%;
+  width: 100%;
   height: 60%;
   overflow: hidden;
 }
@@ -74,4 +75,53 @@
 
 .failed {
   opacity: 0.2;
+}
+
+.normal {
+ /* border-color: rgba(128, 128, 128, 0.25); */
+ border-image: linear-gradient(to bottom right,
+  rgba(128, 128, 128, 0.75) 0%,
+  rgba(128, 128, 128, 0.25) 25%,
+  rgba(128, 128, 128, 0.75) 50%,
+  rgba(128, 128, 128, 0.25) 75%,
+  rgba(128, 128, 128, 0.75) 100%);
+ border-image-slice: 1;
+}
+
+.rare {
+ /* border-color: rgba(165, 42, 42, 0.25); */
+ border-image: linear-gradient(to bottom right,
+ rgba(165, 42, 42, 0.75) 0%,
+ rgba(165, 42, 42, 0.25) 25%,
+ rgba(165, 42, 42, 0.75) 50%,
+ rgba(165, 42, 42, 0.25) 75%,
+ rgba(165, 42, 42, 0.75) 100%);
+border-image-slice: 1;
+}
+
+.superRare {
+ /* border-color: rgba(192, 192, 192, 0.25); */
+ border-image: linear-gradient(to bottom right,
+ rgba(192, 192, 192, 0.75) 0%,
+ rgba(192, 192, 192, 0.25) 25%,
+ rgba(192, 192, 192, 0.75) 50%,
+ rgba(192, 192, 192, 0.25) 75%,
+ rgba(192, 192, 192, 0.75) 100%);
+border-image-slice: 1;
+}
+
+.ultraRare {
+ /* border-color: rgba(255, 217, 0, 0.25); */
+ border-image: linear-gradient(to bottom right,
+ rgba(255, 217, 0, 0.75) 0%,
+ rgba(255, 217, 0, 0.25) 25%,
+ rgba(255, 217, 0, 0.75) 50%,
+ rgba(255, 217, 0, 0.25) 75%,
+ rgba(255, 217, 0, 0.75) 100%);
+border-image-slice: 1;
+}
+
+.legendary {
+  border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+  border-image-slice: 1;
 }
