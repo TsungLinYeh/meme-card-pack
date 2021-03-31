@@ -46,6 +46,10 @@ const Card = ({
 Card.propTypes = {
   item: propTypes.shape({
     title: propTypes.string.isRequired,
+    image: propTypes.string.isRequired,
+    postLink: propTypes.string.isRequired,
+    subreddit: propTypes.string.isRequired,
+    upvotes: propTypes.number.isRequired,
   }).isRequired,
 };
 

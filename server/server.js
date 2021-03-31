@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const redditImageFetcher = require('reddit-image-fetcher');
+// const redditImageFetcher = require('reddit-image-fetcher');
 
 const app = express();
 
