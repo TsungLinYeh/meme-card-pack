@@ -2,20 +2,32 @@ import React from 'react';
 import propTypes from 'prop-types';
 import style from './card.css';
 
-const Card = ({
-  item,
-}) => {
+const Card = ({ item, imgModalHandler }) => {
   let image;
   if (item.image) {
     image = (
-      <div className={`cardImgContainer ${style.cardImgContainer}`}>
-        <img className={`cardImg ${style.cardImg}`} src={item.image} alt={item.title} draggable="false" loading="lazy" />
+      <div
+        className={`cardImgContainer ${style.cardImgContainer}`}
+        onClick={imgModalHandler.bind(this, item)}
+        onKeyPress={imgModalHandler.bind(this, item)}
+        role="button"
+        tabIndex={0}
+      >
+        <img
+          className={`cardImg ${style.cardImg}`}
+          src={item.image}
+          alt={item.title}
+          draggable="false"
+          loading="lazy"
+        />
       </div>
     );
   } else {
     image = (
       <div className={`cardImgLostContainer ${style.cardImgLostContainer}`}>
-        <div className={`cardImgLost ${style.cardImgLost}`}>Sorry Photo lost</div>
+        <div className={`cardImgLost ${style.cardImgLost}`}>
+          Sorry Photo lost
+        </div>
       </div>
     );
   }
