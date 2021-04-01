@@ -7,7 +7,9 @@ let storage = [];
 
 const getPack = () => storage;
 
-const preload = () => {
+const getDeck = () => targetreddit;
+
+const preload = (cb) => {
   redditImageFetcher.fetch({
     type: 'custom',
     total: 10,
@@ -15,6 +17,7 @@ const preload = () => {
   })
     .then((result) => {
       storage = result;
+      cb();
     });
 };
 
@@ -26,4 +29,5 @@ module.exports = {
   preload,
   getPack,
   change,
+  getDeck,
 };

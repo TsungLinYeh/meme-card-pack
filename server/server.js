@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 const port = 3000;
 const server = app.listen(port, () => {
-  redditCards.preload();
+  // redditCards.preload();
   console.log(`listening on http://localhost:${port}`);
 });
 

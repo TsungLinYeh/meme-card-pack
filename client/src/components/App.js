@@ -23,11 +23,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      deck: [],
       pack: [],
       collections: [],
       clicked: undefined,
       isClicked: false,
     };
+    this.getDeckName = this.getDeckName.bind(this);
     this.openOnePack = this.openOnePack.bind(this);
     this.imgModalHandler = this.imgModalHandler.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -35,6 +37,7 @@ class App extends React.Component {
     this.dropped = this.dropped.bind(this);
     this.addToCollectionsHandler = this.addToCollectionsHandler.bind(this);
     this.changeSubreddit = this.changeSubreddit.bind(this);
+    this.getDeckName();
   }
 
   componentDidMount() {
@@ -50,13 +53,22 @@ class App extends React.Component {
     document.removeEventListener('keydown', this.escFunction, false);
   }
 
+  getDeckName() {
+    axios.get('/redditcards/deck').then((res) => {
+      this.setState({
+        deck: res.data,
+      });
+    });
+  }
+
   changeSubreddit(event) {
     if (event.key === 'Enter') {
       // console.log(document.querySelector('#subreddit').value);
       axios.post('/redditcards/change', {
-        subreddit: document.querySelector('#subreddit').value
+        subreddit: document.querySelector('#subreddit').value,
       });
       document.querySelector('#subreddit').value = '';
+      this.getDeckName();
     }
   }
 
@@ -112,11 +124,18 @@ class App extends React.Component {
 
   render() {
     const {
-      pack, collections, clicked, isClicked,
+      pack, collections, clicked, isClicked, deck,
     } = this.state;
     return (
       <div id="app" className="app">
         <div className={styles.headerContainer}>
+          <div className={styles.rarityExample}>
+            <h3>
+              Featured Pack:
+              <br />
+              {deck.join(',')}
+            </h3>
+          </div>
           <button onClick={this.openOnePack} type="button" className={styles.button}>
             open card pack
           </button>
