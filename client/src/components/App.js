@@ -74,6 +74,7 @@ class App extends React.Component {
 
   openOnePack() {
     axios.get('/redditcards/open').then((res) => {
+      // console.log(res.data);
       this.setState({
         pack: res.data,
       }, () => {
@@ -88,13 +89,10 @@ class App extends React.Component {
 
   addToCollectionsHandler(id) {
     const { pack, collections } = this.state;
-    const checker = collections.filter((item) => item.id === id);
-    const product = pack.filter((item) => item.id === id);
-    if (checker.length === 0) {
-      this.setState({
-        collections: [...product, ...collections],
-      });
-    }
+    const product = pack.filter((item, index) => id === `${item.id}${index}`);
+    this.setState({
+      collections: [product[0], ...collections],
+    });
   }
 
   dropped(e) {
@@ -133,7 +131,7 @@ class App extends React.Component {
             <h3>
               Featured Pack:
               <br />
-              {deck.join(',')}
+              {deck.join(',') || 'loading ...'}
             </h3>
           </div>
           <button onClick={this.openOnePack} type="button" className={styles.button}>
@@ -148,17 +146,26 @@ class App extends React.Component {
           <div className={styles.exampleUltraRare} />
           <div className={styles.exampleLegendary} />
           <input className={styles.target} placeholder="change subreddit pack ..." onKeyPress={this.changeSubreddit} id="subreddit" />
+          <div className={styles.rarityExample}>
+            <h3>Login</h3>
+          </div>
+          <div className={styles.rarityExample}>
+            <h3>Signup</h3>
+          </div>
         </div>
-        <div className={styles.relatedProducts}>
-          {pack.map((post) => (
-            <Card
-              item={post}
-              key={post.id}
-              imgModalHandler={this.imgModalHandler}
-            />
-          ))}
+        <div className={styles.packContainer}>
+          <div className={styles.pack}>
+            {pack.map((post, index) => (
+              <Card
+                item={post}
+                index={index}
+                key={`${post.id}${index}`}
+                imgModalHandler={this.imgModalHandler}
+              />
+            ))}
+          </div>
         </div>
-        <div>
+        <div className={styles.listContainer}>
           <List collections={collections} imgModalHandler={this.imgModalHandler} />
         </div>
         <Image clicked={clicked} closeModal={this.closeModal} isClicked={isClicked} />

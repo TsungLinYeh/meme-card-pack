@@ -9,7 +9,7 @@ const getPack = () => storage;
 
 const getDeck = () => targetreddit;
 
-const preload = (cb) => {
+const preload = (cb = () => {}) => {
   redditImageFetcher.fetch({
     type: 'custom',
     total: 10,
@@ -18,7 +18,8 @@ const preload = (cb) => {
     .then((result) => {
       storage = result;
       cb();
-    });
+    })
+    .catch(console.log);
 };
 
 const change = (sub) => {

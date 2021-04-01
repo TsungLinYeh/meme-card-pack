@@ -18,7 +18,7 @@ const checkRarity = (upvotes) => {
   return style.normal;
 };
 
-const Card = ({ item, imgModalHandler }) => {
+const Card = ({ item, imgModalHandler, index }) => {
   const rarity = checkRarity(item.upvotes);
 
   let image;
@@ -50,7 +50,7 @@ const Card = ({ item, imgModalHandler }) => {
     );
   }
   return (
-    <div className={`${style.card} ${rarity}`} draggable="true" id={`card${item.id}`}>
+    <div className={`${style.card} ${rarity}`} draggable="true" id={`card${item.id}${index}`} tag={item.id}>
       {image}
       <a
         className={`cardName ${style.cardName}`}

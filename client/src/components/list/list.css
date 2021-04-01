@@ -6,6 +6,7 @@
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   width: fit-content;
+  min-width: 500px;
   margin: 5px;
 }
 
