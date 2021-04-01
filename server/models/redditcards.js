@@ -1,6 +1,6 @@
 const redditImageFetcher = require('reddit-image-fetcher');
 
-const targetreddit = ['memes'];
+let targetreddit = ['memes', 'gifs'];
 // const targetreddit = ['ShitPostCrusaders'];
 
 let storage = [];
@@ -18,7 +18,12 @@ const preload = () => {
     });
 };
 
+const change = (sub) => {
+  targetreddit = [sub];
+};
+
 module.exports = {
   preload,
   getPack,
+  change,
 };

@@ -50,7 +50,7 @@ const Card = ({ item, imgModalHandler }) => {
     );
   }
   return (
-    <div className={`${style.card} ${rarity}`}>
+    <div className={`${style.card} ${rarity}`} draggable="true" id={`card${item.id}`}>
       {image}
       <a
         className={`cardName ${style.cardName}`}

@@ -4,6 +4,9 @@ const path = require('path');
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 const redditcardsRoutes = require('./routes/redditcards.js');
 const redditCards = require('./models/redditcards.js');
 

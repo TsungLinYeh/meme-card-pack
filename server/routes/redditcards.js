@@ -7,4 +7,11 @@ router.get('/open', (req, res) => {
   redditCards.preload();
 });
 
+router.post('/change', (req, res) => {
+  const sub = req.body.subreddit;
+  redditCards.change(sub);
+  res.sendStatus(201);
+  redditCards.preload();
+});
+
 module.exports = router;
