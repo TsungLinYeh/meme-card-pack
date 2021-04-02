@@ -1,6 +1,6 @@
 const redditImageFetcher = require('reddit-image-fetcher');
 
-let targetreddit = ['memes', 'gifs'];
+let targetreddit = ['memes'];
 // const targetreddit = ['ShitPostCrusaders'];
 
 let storage = [];
